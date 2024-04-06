@@ -11,13 +11,13 @@ async function fetchDefinitions() {
     }
 
     try {
-        const response = await fetch(https://api.dictionaryapi.dev/api/v2/entries/en/${word});
+        const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
         const data = await response.json();
 
         definitionList.innerHTML = data.map(entry => {
             return entry.meanings.map(meaning => {
                 return meaning.definitions.map(def => {
-                    return <ol><li><strong>${meaning.partOfSpeech}</strong>: ${def.definition}</li></ol>;
+                    return `<ol><li><strong>${meaning.partOfSpeech}</strong>: ${def.definition}</li></ol>`;
                 }).join('');
             }).join('');
         }).join('');
